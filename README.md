@@ -49,16 +49,31 @@ npm run build
 
 ---
 
-## 📁 Simple Project Navigation
+## 📁 Project Structure (Frontend • Backend • AI/ML)
 
 ```
 dev-ai-sentinel/
 ├── apps/
-│   ├── web/                     # Frontend Next.js dashboard UI
-│   └── api/                     # Backend Express REST API
+│   ├── web/                     # 🖥️ FRONTEND: Next.js + React Dashboard UI
+│   │   └── src/features/
+│   │       ├── ai-insights/     # AI explanation & fix components (Boilerplate)
+│   │       ├── findings/        # Finding table & severity badges
+│   │       ├── repositories/    # Tracked repository lists
+│   │       └── scans/           # Scan history tables
+│   └── api/                     # ⚙️ BACKEND: Express + TypeScript REST API
+│       └── src/modules/
+│           ├── ai/              # AI endpoints: /explain, /risk-score, /suggest-patch
+│           ├── repositories/    # Repository management routes & controllers
+│           ├── scans/           # Scan lifecycle routes & controllers
+│           └── findings/        # Findings query routes & controllers
 ├── packages/
-│   ├── contracts/               # Shared TypeScript types & validation schemas
-│   └── analysis-engine/         # Static analysis rules and normalizer
+│   ├── ai-ml/                   # 🧠 AI/ML: Explainer, Risk Classifier, Patch Generator
+│   │   └── src/
+│   │       ├── explainers/      # LLM / Gemini prompt explainer (Boilerplate)
+│   │       ├── classifiers/     # ML vulnerability risk score classifier (Boilerplate)
+│   │       └── fixers/          # Automated code patch & diff generator (Boilerplate)
+│   ├── contracts/               # 📦 SHARED: Zod schemas & TypeScript DTOs
+│   └── analysis-engine/         # 🔍 SCANNER: Static security & quality rules
 ├── docs/
 │   ├── CONTRIBUTING.md          # How to contribute as a student
 │   ├── API.md                   # Simple API endpoints guide

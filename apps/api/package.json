@@ -11,6 +11,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@dev-ai-sentinel/ai-ml": "*",
     "@dev-ai-sentinel/analysis-engine": "*",
     "@dev-ai-sentinel/contracts": "*",
     "@prisma/client": "^5.18.0",

@@ -78,4 +78,27 @@ describe("Dev AI Sentinel API", () => {
       expect(scanRes.body.data.repositoryId).toBe(repoId);
     });
   });
+
+  describe("AI & ML API", () => {
+    it("generates an AI explanation for an existing finding", async () => {
+      const findingsRes = await request(app).get("/api/v1/findings");
+      const findingId = findingsRes.body.data[0].id;
+
+      const res = await request(app)
+        .post("/api/v1/ai/explain")
+        .send({ findingId });
+
+      expect(res.status).toBe(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.data.findingId).toBe(findingId);
+      expect(res.body.data.summary).toBeDefined();
+    });
+
+    it("evaluates overall repository risk score", async () => {
+      const res = await request(app).get("/api/v1/ai/risk-score");
+      expect(res.status).toBe(200);
+      expect(res.body.success).toBe(true);
+      expect(typeof res.body.data.overallRiskScore).toBe("number");
+    });
+  });
 });

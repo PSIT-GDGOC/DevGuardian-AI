@@ -187,3 +187,38 @@ Creates an issue linked to a repository and optional finding.
   "body": "A critical severity secret was identified in src/config/keys.example.ts. Move to .env."
 }
 ```
+
+---
+
+## 6. AI & Machine Learning
+
+### `POST /api/v1/ai/explain`
+Generates a plain-English explanation and recommended fix for a specific code finding.
+
+**Request Body**:
+```json
+{
+  "findingId": "33333333-3333-4333-a333-333333333331"
+}
+```
+
+**Response `200 OK`**:
+```json
+{
+  "success": true,
+  "data": {
+    "findingId": "33333333-3333-4333-a333-333333333331",
+    "summary": "AI Analysis for SEC-001: Hardcoded Secret",
+    "impact": "This issue may expose credentials if deployed to production.",
+    "recommendedFix": "Use environment variables instead of hardcoding tokens.",
+    "confidenceScore": 0.85
+  }
+}
+```
+
+### `GET /api/v1/ai/risk-score`
+Computes an estimated repository risk score (0.0 to 10.0) based on detected findings.
+
+### `POST /api/v1/ai/suggest-patch`
+Generates a proposed git diff code patch for a finding.
+
