@@ -38,42 +38,52 @@ npm run build
 ```
 
 ### 3. Run Locally
-- **Start the API Server** (Runs at `http://localhost:4000`):
+- **Start the Backend API Server** (Runs at `http://localhost:4000`):
   ```bash
-  npm run dev:api
+  npm run dev:backend
   ```
-- **Start the Web Dashboard** (Runs at `http://localhost:3000`):
+- **Start the Frontend Web Dashboard** (Runs at `http://localhost:3000`):
   ```bash
-  npm run dev:web
+  npm run dev:frontend
   ```
 
 ---
 
-## 📁 Project Structure (Frontend • Backend • AI/ML)
+## 📁 Simple Project Structure
+
+Contributors can directly open the area they want to work on:
 
 ```
 dev-ai-sentinel/
-├── apps/
-│   ├── web/                     # 🖥️ FRONTEND: Next.js + React Dashboard UI
-│   │   └── src/features/
-│   │       ├── ai-insights/     # AI explanation & fix components (Boilerplate)
-│   │       ├── findings/        # Finding table & severity badges
-│   │       ├── repositories/    # Tracked repository lists
-│   │       └── scans/           # Scan history tables
-│   └── api/                     # ⚙️ BACKEND: Express + TypeScript REST API
-│       └── src/modules/
-│           ├── ai/              # AI endpoints: /explain, /risk-score, /suggest-patch
-│           ├── repositories/    # Repository management routes & controllers
-│           ├── scans/           # Scan lifecycle routes & controllers
-│           └── findings/        # Findings query routes & controllers
-├── packages/
-│   ├── ai-ml/                   # 🧠 AI/ML: Explainer, Risk Classifier, Patch Generator
-│   │   └── src/
-│   │       ├── explainers/      # LLM / Gemini prompt explainer (Boilerplate)
-│   │       ├── classifiers/     # ML vulnerability risk score classifier (Boilerplate)
-│   │       └── fixers/          # Automated code patch & diff generator (Boilerplate)
-│   ├── contracts/               # 📦 SHARED: Zod schemas & TypeScript DTOs
-│   └── analysis-engine/         # 🔍 SCANNER: Static security & quality rules
+├── frontend/                    # 🖥️ FRONTEND: Next.js + React Dashboard UI
+│   ├── src/
+│   │   ├── app/                 # Dashboard page & layout
+│   │   ├── components/          # Reusable UI (Navbar, StatCard)
+│   │   ├── features/            # Features (Findings, Repos, Scans, AI Insights)
+│   │   ├── hooks/               # Custom data fetching hooks
+│   │   └── types/               # TypeScript interfaces
+│   └── package.json
+│
+├── backend/                     # ⚙️ BACKEND: Express + TypeScript REST API
+│   ├── src/
+│   │   ├── modules/             # API routes & controllers (Repositories, Scans, Findings, AI)
+│   │   ├── analysis-engine/     # Static security scanner & finding normalizer
+│   │   ├── services/            # In-memory store & scanner service
+│   │   ├── middleware/          # Validation, error handling, logging
+│   │   ├── contracts/           # Zod validation schemas
+│   │   ├── app.ts               # Express app
+│   │   └── server.ts            # Server entry point
+│   ├── tests/                   # Backend & API integration tests
+│   └── package.json
+│
+├── ai-ml/                       # 🧠 AI / ML: Explainers, Classifiers & Fixers
+│   ├── src/
+│   │   ├── explainers/          # LLM / Gemini prompt explainer (Boilerplate)
+│   │   ├── classifiers/         # ML vulnerability risk score classifier (Boilerplate)
+│   │   └── fixers/              # Automated code patch & diff generator (Boilerplate)
+│   ├── tests/                   # AI/ML unit tests
+│   └── package.json
+│
 ├── docs/
 │   ├── CONTRIBUTING.md          # How to contribute as a student
 │   ├── API.md                   # Simple API endpoints guide
@@ -92,12 +102,12 @@ dev-ai-sentinel/
 
 | Command | What It Does |
 |---|---|
-| `npm run dev:api` | Starts the Express backend on port 4000 |
-| `npm run dev:web` | Starts the Next.js web dashboard on port 3000 |
-| `npm test` | Runs the full test suite |
-| `npm run typecheck` | Checks TypeScript types across all workspaces |
-| `npm run lint` | Runs the ESLint linter |
-| `npm run build` | Builds contracts, analysis engine, and API |
+| `npm run dev:backend` | Starts the Express backend on port 4000 |
+| `npm run dev:frontend` | Starts the Next.js web dashboard on port 3000 |
+| `npm test` | Runs the full test suite across all 3 folders |
+| `npm run typecheck` | Checks TypeScript types across frontend, backend, and ai-ml |
+| `npm run lint` | Runs ESLint |
+| `npm run build` | Builds backend and ai-ml packages |
 
 ---
 
