@@ -1,0 +1,55 @@
+name: "✨ Feature Request"
+description: "Suggest an idea, enhancement, or new feature for Dev AI Sentinel"
+title: "[FEAT]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting improvements to Dev AI Sentinel!
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Target Workspace
+      description: Where would this feature be implemented?
+      options:
+        - "apps/web (Frontend Dashboard UI)"
+        - "apps/api (Backend API / Services)"
+        - "packages/contracts (Shared Zod Schemas)"
+        - "packages/analysis-engine (Rules / Analyzers / Normalizers)"
+        - "General Architecture / Cross-cutting"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What challenge, limitation, or workflow gap does this feature address?
+      placeholder: Describe the problem...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution / Implementation Idea
+      description: Describe your proposed design, user experience, or architectural change.
+      placeholder: Describe what you want to see built...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: What other approaches or solutions did you consider?
+      placeholder: List any alternatives...
+
+  - type: checkboxes
+    id: contributor
+    attributes:
+      label: Contributor Willingness
+      options:
+        - label: I am willing to work on this feature and submit a Pull Request!

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GDG on Campus Community Discussions
+    url: https://github.com/PSIT-GDGOC/DevGuardian-AI/discussions
+    about: Ask questions, share project ideas, or discuss implementation with mentors and peers.
+  - name: 📖 Development Setup Guide
+    url: https://github.com/PSIT-GDGOC/DevGuardian-AI/blob/main/docs/DEVELOPMENT.md
+    about: Instructions on setting up your local environment and running tests.
+  - name: 🤝 GDGOC Contribution Guidelines
+    url: https://github.com/PSIT-GDGOC/DevGuardian-AI/blob/main/docs/CONTRIBUTING.md
+    about: Read about branch naming, commit standards, and pull request workflows.

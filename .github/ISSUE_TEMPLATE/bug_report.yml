@@ -1,0 +1,81 @@
+name: "🐛 Bug Report"
+description: "File a reproducible bug or defect in Dev AI Sentinel"
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please provide as much diagnostic detail as possible.
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Affected Monorepo Workspace
+      description: Which workspace or package is experiencing the problem?
+      options:
+        - "apps/web (Frontend Dashboard)"
+        - "apps/api (Express REST API)"
+        - "packages/contracts (Shared Zod Schemas & Types)"
+        - "packages/analysis-engine (Static Rules & Normalizer)"
+        - "docs / scripts / tooling"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the defect.
+      placeholder: Outline what went wrong...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: What sequence of commands or user actions produces the bug?
+      value: |
+        1. Run '...'
+        2. Execute '...'
+        3. Observe error output: '...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen instead?
+      placeholder: Describe the expected outcome...
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment Info
+      description: Operating system, Node.js version, and browser if applicable.
+      placeholder: "e.g., Windows 11 / Ubuntu 22.04, Node.js v22.19.0, npm 10.9.3"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Terminal Logs / Stack Trace
+      description: Paste relevant terminal output from npm test, npm run dev, or server logs.
+      render: shell
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      options:
+        - label: I have verified this behavior against the latest `main` branch.
+          required: true
+        - label: I ran `npm run typecheck` and `npm test` locally.
+          required: true
+        - label: I searched existing issues to ensure this is not a duplicate.
+          required: true

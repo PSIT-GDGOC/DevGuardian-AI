@@ -1,0 +1,103 @@
+name: "🎯 Contributor Task / Issue"
+description: "Define a well-scoped task suitable for GDGOC student contributors"
+title: "[TASK]: "
+labels: ["gdgoc-contributor", "good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template when defining an open-source task for GDG on Campus members.
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty Level
+      description: What experience level is required for this task?
+      options:
+        - "Beginner (Good First Issue)"
+        - "Intermediate"
+        - "Advanced"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: workspace
+    attributes:
+      label: Target Monorepo Workspace
+      options:
+        - "apps/web (Frontend)"
+        - "apps/api (Backend)"
+        - "packages/contracts (Shared Types)"
+        - "packages/analysis-engine (Analysis Rules & Normalization)"
+        - "docs (Documentation)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Explain the problem or feature opportunity.
+    validations:
+      required: true
+
+  - type: textarea
+    id: why_it_matters
+    attributes:
+      label: Why the Change Matters
+      description: Explain the architectural or contributor value.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Explicit list of what changes should be made.
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of Scope
+      description: Explicit boundaries — what should NOT be touched.
+    validations:
+      required: true
+
+  - type: textarea
+    id: existing_files
+    attributes:
+      label: Relevant Existing Files
+      placeholder: List exact files in the monorepo...
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation_steps
+    attributes:
+      label: Step-by-Step Implementation Guidance
+      value: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria (Checkboxes)
+      value: |
+        - [ ] Criteria 1
+        - [ ] Criteria 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: required_tests
+    attributes:
+      label: Required Tests
+      description: Specify commands and test suites (e.g., npm test, npm run test:web).
+    validations:
+      required: true
