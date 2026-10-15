@@ -3,10 +3,16 @@ import { dataStore } from "../../services/store.js";
 import { CreateRepositoryInput } from "../../contracts/index.js";
 
 export class RepositoryController {
-  public async list(_req: Request, res: Response, next: NextFunction): Promise<void> {
+  public async list(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      // TODO (Issue 2): Support search filtering here (e.g. const search = req.query.search as string | undefined)
-      const repos = await dataStore.getRepositories();
+      const search = req.query.search as string | undefined;
+      let repos = await dataStore.getRepositories();
+
+      if (typeof search === "string" && search.trim() !== "") {
+        const query = search.trim().toLowerCase();
+        repos = repos.filter((repo) => repo.name.toLowerCase().includes(query));
+      }
+
       res.json({
         success: true,
         data: repos,

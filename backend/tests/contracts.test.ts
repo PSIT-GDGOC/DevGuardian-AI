@@ -30,6 +30,18 @@ describe("Contracts Zod Schemas", () => {
       const result = CreateRepositorySchema.safeParse(invalid);
       expect(result.success).toBe(false);
     });
+
+    it("sanitizes repository URLs with whitespace and trailing slashes", () => {
+      const input = {
+        name: "DevGuardian-AI",
+        url: "   https://github.com/PSIT-GDGOC/DevGuardian-AI///   ",
+      };
+      const result = CreateRepositorySchema.safeParse(input);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.url).toBe("https://github.com/PSIT-GDGOC/DevGuardian-AI");
+      }
+    });
   });
 
   describe("CreateScanSchema", () => {
