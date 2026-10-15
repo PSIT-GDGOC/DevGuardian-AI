@@ -8,10 +8,16 @@ export const CreateRepositorySchema = z.object({
   name: z.string().min(1, "Repository name is required").max(100),
   url: z
     .string()
-    .url("A valid URL is required")
-    .refine((val) => val.startsWith("https://github.com/") || val.startsWith("http://github.com/"), {
-      message: "Repository URL must be a valid GitHub URL",
-    }),
+    .trim()
+    .transform((val) => val.replace(/\/+$/, ""))
+    .pipe(
+      z
+        .string()
+        .url("A valid URL is required")
+        .refine((val) => val.startsWith("https://github.com/") || val.startsWith("http://github.com/"), {
+          message: "Repository URL must be a valid GitHub URL",
+        })
+    ),
   defaultBranch: z.string().min(1).default("main"),
 });
 
