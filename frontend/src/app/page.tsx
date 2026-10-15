@@ -59,6 +59,21 @@ export default function DashboardPage() {
           </div>
         )}
 
+        {/* Loading indicator */}
+        {loading && (
+          <div style={{
+            backgroundColor: "#eff6ff",
+            border: "1px solid #bfdbfe",
+            color: "#1e40af",
+            padding: "0.75rem 1rem",
+            borderRadius: "0.375rem",
+            marginBottom: "1.5rem",
+            fontSize: "0.875rem"
+          }}>
+            Loading dashboard data…
+          </div>
+        )}
+
         {/* Metric Cards Grid */}
         <div style={{
           display: "grid",
